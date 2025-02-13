@@ -1,0 +1,7 @@
+global:
+  projectName: bn-project
+  appVersion: 0.0.1
+
+chart:
+  bn-client:
+    enable: true

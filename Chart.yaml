@@ -1,0 +1,14 @@
+apiVersion: v2
+name: bn-project
+description: BN Project Helm Charts
+type: application
+
+# Helm chart version
+version: 1.0.0
+
+# BN Project version
+appVersion: "0.0.1"
+
+dependencies:
+  - name: bn-client
+    condition: chart.bn-client.enable
