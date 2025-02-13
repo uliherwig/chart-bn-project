@@ -2,6 +2,33 @@ global:
   projectName: bn-project
   appVersion: 0.0.1
 
-chart:
-  bn-client:
-    enable: true
+
+ 
+
+
+postgresql:
+  auth:
+    username: keycloak
+    password: mypassword
+    database: keycloak
+  primary:
+    persistence:
+      enabled: true
+      size: 10Gi
+  service:
+    type: ClusterIP
+
+keycloak:
+  auth:
+    adminUser: admin
+    adminPassword: adminpassword
+  proxy: edge
+  service:
+    type: ClusterIP
+  database:
+    vendor: postgres
+    host: postgreskeycloak-postgresql
+    port: 5432
+    user: keycloak
+    password: mypassword
+    database: keycloak

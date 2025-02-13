@@ -11,4 +11,11 @@ appVersion: "0.0.1"
 
 dependencies:
   - name: bn-client
-    condition: chart.bn-client.enable
+    version: 0.1.0
+    repository: "file://charts/bn-client"
+  - name: postgresql
+    version: 16.4.7
+    repository: https://charts.bitnami.com/bitnami
+  - name: keycloak
+    version: 24.4.9
+    repository: https://charts.bitnami.com/bitnami
