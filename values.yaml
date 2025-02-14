@@ -156,13 +156,8 @@ keycloak:
             ]
         }
 
-  # extraVolumes:
-  #   - name: keycloak-config-volume
-  #     configMap:
-  #       name: keycloak-config
-
-  # extraVolumeMounts:
-  #   - name: keycloak-config-volume
-  #     mountPath: /opt/keycloak/config/config-keycloak.json  # Muss mit dem ConfigMap-Key übereinstimmen
-  #     subPath: config-keycloak.json
+kafka:
+  fullnameOverride: kafka
+  zookeeper:
+    enabled: true
 
