@@ -24,25 +24,25 @@ keycloak:
     port: 5432 
 
 
-  # externalDatabase:
-  #   host: "127.0.0.1"
-  #   database: "keycloak"
-  #   user: "keycloak_user"
-  #   password: "password"
-  #   port: 5432
-  #   existingSecret: ""
+  externalDatabase:
+    host: "127.0.0.1"
+    database: "keycloak"
+    user: "keycloak_user"
+    password: "password"
+    port: 5432
+    existingSecret: ""
 
-  # extraEnvVars:
-  #   - name: DB_VENDOR
-  #     value: postgres
-  #   - name: DB_ADDR
-  #     value: "127.0.0.1"
-  #   - name: DB_DATABASE
-  #     value: "keycloak"
-  #   - name: DB_USER
-  #     value: "keycloak_user"
-  #   - name: DB_PASSWORD
-  #     value: "password"
+  extraEnvVars:
+    - name: DB_VENDOR
+      value: postgres
+    - name: DB_ADDR
+      value: "127.0.0.1"
+    - name: DB_DATABASE
+      value: "keycloak"
+    - name: DB_USER
+      value: "keycloak_user"
+    - name: DB_PASSWORD
+      value: "password"
 
   extraVolumes:
     - name: keycloak-config-volume
