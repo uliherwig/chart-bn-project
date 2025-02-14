@@ -52,5 +52,6 @@ keycloak:
 
   extraVolumeMounts:
     - name: keycloak-config-volume
-      mountPath: /opt/keycloak/config/config.json
-      subPath: config.json
+      mountPath: /opt/keycloak/config/config-keycloak.json  # Muss mit dem ConfigMap-Key übereinstimmen
+      subPath: config-keycloak.json
+
