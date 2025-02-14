@@ -3,6 +3,7 @@ global:
   appVersion: 0.0.1
 
 keycloak:
+  kind: deployment
   fullnameOverride: keycloak
 
   auth:
@@ -14,20 +15,7 @@ keycloak:
   service:
     type: LoadBalancer
     port: 8080
-    targetPort: 8080
-  
-  ingress:
-    enabled: true
-    className: "nginx"
-    annotations:
-      kubernetes.io/ingress.class: "nginx"
-      kubernetes.io/tls-acme: "true"
-    hosts:
-      - host: keycloak.local
-        paths:
-          - path: /
-            pathType: Prefix
-    tls: []
+    targetPort: 8080 
 
   postgresql:
     enabled: false
@@ -36,7 +24,6 @@ keycloak:
     user: "keycloak_user"
     password: "password"
     port: 5432 
-
 
   externalDatabase:
     host: "192.168.178.71" # Replace with the actual IP address of your Ubuntu machine
