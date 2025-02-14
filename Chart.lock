@@ -2,11 +2,8 @@ dependencies:
 - name: bn-client
   repository: file://charts/bn-client
   version: 0.1.0
-- name: postgresql
-  repository: https://charts.bitnami.com/bitnami
-  version: 16.4.7
 - name: keycloak
   repository: https://charts.bitnami.com/bitnami
   version: 24.4.9
-digest: sha256:cd484776f77426c7db0116dd74968dcf0d425207c87963e72f92588c930e1d7d
-generated: "2025-02-13T17:23:48.4567032+01:00"
+digest: sha256:514543830e579088bb0fb80f249d443c0d2f2a69defce6527e6735e5cd4fa3a4
+generated: "2025-02-14T10:25:29.1355988+01:00"
