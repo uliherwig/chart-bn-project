@@ -5,106 +5,106 @@ metadata:
 data:
   config-keycloak.json: |
     {
-    "id": "bn-project",
-    "realm": "bn-project",
-    "enabled": true,
-    "roles": {
-        "realm": [
-        {
-            "name": "admin",
-            "description": "Administrator role with full access"
-        },
-        {
-            "name": "user",
-            "description": "User role with limited access"
-        },
-        {
-            "name": "guest",
-            "description": "Guest role with minimal access"
-        }
-        ]
-    },
-    "users": [
-        {
-        "username": "bn-admin",
-        "email": "bn_admin@test.de",
-        "firstName": "Uli",
-        "lastName": "Herwig",
+        "id": "bn-project",
+        "realm": "bn-project",
         "enabled": true,
-        "emailVerified": true,
-        "credentials": [
+        "roles": {
+            "realm": [
             {
-            "type": "password",
-            "value": "Giwreh#1",
-            "temporary": false
-            }
-        ],
-        "realmRoles": [
-            "admin"
-        ]
-        },
-        {
-        "username": "bn-user",
-        "email": "bn_user@test.de",
-        "firstName": "John",
-        "lastName": "Doe",
-        "enabled": true,
-        "emailVerified": true,
-        "credentials": [
+                "name": "admin",
+                "description": "Administrator role with full access"
+            },
             {
-            "type": "password",
-            "value": "Giwreh#1",
-            "temporary": false
+                "name": "user",
+                "description": "User role with limited access"
+            },
+            {
+                "name": "guest",
+                "description": "Guest role with minimal access"
             }
-        ],
-        "realmRoles": [
-            "user"
-        ]
-        },
-        {
-        "username": "service-account-config-cli",
-        "enabled": true,
-        "serviceAccountClientId": "config-cli",
-        "realmRoles": [
-            "uma_authorization",
-            "offline_access",
-            "admin"
-        ],
-        "clientRoles": {
-            "realm-management": [
-            "realm-admin"
-            ],
-            "account": [
-            "view-profile",
-            "manage-account"
             ]
         },
-        "notBefore": 0
-        }
-    ],
-    "clients": [
-        {
-        "clientId": "bn-project-client",
-        "enabled": true,
-        "protocol": "openid-connect",
-        "publicClient": false,
-        "secret": "L7nsaqcDc1QrLSIrKvU0rEjUwgIP2pp0",
-        "redirectUris": [
-            "*"
+        "users": [
+            {
+            "username": "bn-admin",
+            "email": "bn_admin@test.de",
+            "firstName": "Uli",
+            "lastName": "Herwig",
+            "enabled": true,
+            "emailVerified": true,
+            "credentials": [
+                {
+                "type": "password",
+                "value": "Giwreh#1",
+                "temporary": false
+                }
+            ],
+            "realmRoles": [
+                "admin"
+            ]
+            },
+            {
+            "username": "bn-user",
+            "email": "bn_user@test.de",
+            "firstName": "John",
+            "lastName": "Doe",
+            "enabled": true,
+            "emailVerified": true,
+            "credentials": [
+                {
+                "type": "password",
+                "value": "Giwreh#1",
+                "temporary": false
+                }
+            ],
+            "realmRoles": [
+                "user"
+            ]
+            },
+            {
+            "username": "service-account-config-cli",
+            "enabled": true,
+            "serviceAccountClientId": "config-cli",
+            "realmRoles": [
+                "uma_authorization",
+                "offline_access",
+                "admin"
+            ],
+            "clientRoles": {
+                "realm-management": [
+                "realm-admin"
+                ],
+                "account": [
+                "view-profile",
+                "manage-account"
+                ]
+            },
+            "notBefore": 0
+            }
         ],
-        "webOrigins": [
-            "*"
+        "clients": [
+            {
+            "clientId": "bn-project-client",
+            "enabled": true,
+            "protocol": "openid-connect",
+            "publicClient": false,
+            "secret": "L7nsaqcDc1QrLSIrKvU0rEjUwgIP2pp0",
+            "redirectUris": [
+                "*"
+            ],
+            "webOrigins": [
+                "*"
+            ]
+            },
+            {
+            "clientId": "config-cli",
+            "enabled": true,
+            "clientAuthenticatorType": "client-secret",
+            "secret": "btbOPE9TGfTcCD3OmDP4DVvRa2jskaSt",
+            "directAccessGrantsEnabled": false,
+            "serviceAccountsEnabled": true,
+            "publicClient": false,
+            "protocol": "openid-connect"
+            }
         ]
-        },
-        {
-        "clientId": "config-cli",
-        "enabled": true,
-        "clientAuthenticatorType": "client-secret",
-        "secret": "btbOPE9TGfTcCD3OmDP4DVvRa2jskaSt",
-        "directAccessGrantsEnabled": false,
-        "serviceAccountsEnabled": true,
-        "publicClient": false,
-        "protocol": "openid-connect"
-        }
-    ]
     }

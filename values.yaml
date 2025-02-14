@@ -1,18 +1,42 @@
 global:
   projectName: bn-project
-  appVersion: 0.0.2
+  appVersion: 0.0.1
 
 keycloak:
+  fullnameOverride: keycloak
+
   auth:
     adminUser: admin
     adminPassword: password
+
   proxy: edge
-  service:
-    type: ClusterIP
-  database:
-    vendor: postgres
-    host: localhost
+
+  externalDatabase:
+    host: "127.0.0.1"
+    database: "keycloak"
+    user: "keycloak_user"
+    password: "password"
     port: 5432
-    user: keycloak_user
-    password: password
-    database: keycloak
+    existingSecret: ""
+
+  extraEnvVars:
+    - name: DB_VENDOR
+      value: postgres
+    - name: DB_ADDR
+      value: "127.0.0.1"
+    - name: DB_DATABASE
+      value: "keycloak"
+    - name: DB_USER
+      value: "keycloak_user"
+    - name: DB_PASSWORD
+      value: "password"
+
+  extraVolumes:
+    - name: keycloak-config-volume
+      configMap:
+        name: keycloak-config
+
+  extraVolumeMounts:
+    - name: keycloak-config-volume
+      mountPath: /opt/keycloak/config/config.json
+      subPath: config.json
