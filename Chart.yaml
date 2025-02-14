@@ -4,7 +4,7 @@ description: BN Project Helm Charts
 type: application
 
 # Helm chart version
-version: 1.0.13
+version: 1.0.14
 
 # BN Project version
 appVersion: "0.0.1"
