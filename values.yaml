@@ -197,6 +197,6 @@ identityService:
     Keycloak__AdminClientId: "config-cli"
     Keycloak__AdminClientSecret: "btbOPE9TGfTcCD3OmDP4DVvRa2jskaSt"
 
-    ConnectionStrings__IdentityDbConnection: "Host=postgres;Database=bn_identity_db;Username=root;Password=L7n1P2pp0??13;"
+    ConnectionStrings__IdentityDbConnection: "Host=192.168.178.7;Port=5432;Database=bn_identity_db;Username=bnproject_user;Password=L7n1P2pp0??13;"
 
   
