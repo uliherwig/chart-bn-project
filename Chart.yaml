@@ -4,7 +4,7 @@ description: BN Project Helm Charts
 type: application
 
 # Helm chart version
-version: 1.0.14
+version: 1.0.15
 
 # BN Project version
 appVersion: "0.0.1"
@@ -18,4 +18,7 @@ dependencies:
     repository: https://charts.bitnami.com/bitnami
   - name: kafka
     version: 31.1.0
+    repository: https://charts.bitnami.com/bitnami
+  - name: zookeeper
+    version: 13.7.0
     repository: https://charts.bitnami.com/bitnami

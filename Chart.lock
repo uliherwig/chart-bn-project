@@ -8,5 +8,8 @@ dependencies:
 - name: kafka
   repository: https://charts.bitnami.com/bitnami
   version: 31.1.0
-digest: sha256:87cec64673ca67414083cebf8bd9f795dd0ed167e476f6d75d5792b76cfa1ae9
-generated: "2025-02-14T17:22:00.3757397+01:00"
+- name: zookeeper
+  repository: https://charts.bitnami.com/bitnami
+  version: 13.7.0
+digest: sha256:c3e776e8651876c4e6a50ea30bbc32004e28629e081f65183b6caf139425eb16
+generated: "2025-02-16T12:44:56.9006813+01:00"
