@@ -11,5 +11,8 @@ dependencies:
 - name: zookeeper
   repository: https://charts.bitnami.com/bitnami
   version: 13.7.0
-digest: sha256:c3e776e8651876c4e6a50ea30bbc32004e28629e081f65183b6caf139425eb16
-generated: "2025-02-16T12:44:56.9006813+01:00"
+- name: identityservice
+  repository: file://charts/identityservice
+  version: 0.1.0
+digest: sha256:2bdb4b9c9e1570132354172f75689985fa5f94786afa2501d461d1f8f086baec
+generated: "2025-02-16T16:44:06.8920906+01:00"

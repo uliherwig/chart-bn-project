@@ -4,7 +4,7 @@ description: BN Project Helm Charts
 type: application
 
 # Helm chart version
-version: 1.0.15
+version: 1.0.16
 
 # BN Project version
 appVersion: "0.0.1"
@@ -22,3 +22,6 @@ dependencies:
   - name: zookeeper
     version: 13.7.0
     repository: https://charts.bitnami.com/bitnami
+  - name: identityservice
+    version: 0.1.0
+    repository: "file://charts/identityservice"

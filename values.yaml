@@ -157,7 +157,7 @@ keycloak:
         }
 
 zookeeper:
-  replicaCount: 3
+  replicaCount: 1
   persistence:
     enabled: true
     size: 8Gi
@@ -170,7 +170,7 @@ zookeeper:
       cpu: 500m
 
 kafka:
-  replicaCount: 3
+  replicaCount: 1
   persistence:
     enabled: true
     size: 10Gi
@@ -182,3 +182,21 @@ kafka:
       memory: 2Gi
       cpu: 1000m
 
+identityService:
+  name: identityservice
+  image: "ulihdocker/identityservice"
+  tag: "0.0.1"
+
+  environment:
+    ASPNETCORE_ENVIRONMENT: "Development"
+    Keycloak__Authority: "http://keycloak:8080/realms/bn-project"
+    Keycloak__Host: "http://keycloak:8080"
+    Keycloak__Realm: "bn-project"
+    Keycloak__ClientId: "bn-project-client"
+    Keycloak__ClientSecret: "L7nsaqcDc1QrLSIrKvU0rEjUwgIP2pp0"
+    Keycloak__AdminClientId: "config-cli"
+    Keycloak__AdminClientSecret: "btbOPE9TGfTcCD3OmDP4DVvRa2jskaSt"
+
+    ConnectionStrings__IdentityDbConnection: "Host=postgres;Database=bn_identity_db;Username=root;Password=L7n1P2pp0??13;"
+
+  
