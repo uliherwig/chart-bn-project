@@ -182,31 +182,6 @@ kafka:
       memory: 2Gi
       cpu: 1000m
 
-identityService:
-  replicaCount: 1
-  aspnetCoreExtraEnvVars:
-    - name: ASPNETCORE_URLS
-      value: http://+:5044
-    - name: ASPNETCORE_ENVIRONMENT
-      value: Development
-  keycloakExtraEnvVars:
-    - name: Keycloak__Authority
-      value: http://keycloak:8080/realms/bn-project
-    - name: Keycloak__Host
-      value: http://keycloak:8080
-    - name: Keycloak__Realm
-      value: bn-project
-    - name: Keycloak__ClientId
-      value: bn-project-client
-    - name: Keycloak__ClientSecret
-      value: L7nsaqcDc1QrLSIrKvU0rEjUwgIP2pp0
-    - name: Keycloak__AdminClientId
-      value: config-cli
-    - name: Keycloak__AdminClientSecret
-      value: btbOPE9TGfTcCD3OmDP4DVvRa2jskaSt
-  connectionStringsExtraEnvVars:
-    - name: ConnectionStrings__IdentityDbConnection
-      value: Host=192.168.178.7;Port=5432;Database=bn_identity_db;Username=bnproject_user;Password=L7n1P2pp0??13;
 
 
 

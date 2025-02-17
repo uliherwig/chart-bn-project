@@ -1,7 +1,4 @@
 dependencies:
-- name: bn-client
-  repository: file://charts/bn-client
-  version: 0.1.0
 - name: keycloak
   repository: https://charts.bitnami.com/bitnami
   version: 24.4.9
@@ -11,8 +8,5 @@ dependencies:
 - name: zookeeper
   repository: https://charts.bitnami.com/bitnami
   version: 13.7.0
-- name: identityservice
-  repository: file://charts/identityservice
-  version: 0.1.0
-digest: sha256:2bdb4b9c9e1570132354172f75689985fa5f94786afa2501d461d1f8f086baec
-generated: "2025-02-16T16:44:06.8920906+01:00"
+digest: sha256:a3d855b72f2484898e42bab71618b013603e68562f196fe69159bafec59f6618
+generated: "2025-02-17T11:06:23.7540907+01:00"
