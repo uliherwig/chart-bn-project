@@ -9,6 +9,6 @@ entries:
     name: bn-project
     type: application
     urls:
-    - bn-project-1.0.19.tgz
-    version: 1.0.19
+    - bn-project-1.0.20.tgz
+    version: 1.0.20
 generated: "2025-01-16T11:10:09.5975876+01:00"
