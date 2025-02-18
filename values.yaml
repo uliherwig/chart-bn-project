@@ -8,33 +8,50 @@ keycloak:
   fullnameOverride: keycloak
   namespace: bn-project
 
-  auth:
-    adminUser: admin
-    adminPassword: password
-
-  proxy: edge
-
-  service:
-    type: ClusterIP
-    port: 8080
-    targetPort: 8080
-
+  persistence:
+    enabled: true  
+    existingClaim: keycloak-pvc
+  
   ingress:
     enabled: true
-    hostname: keycloak
+    hostname: keycloak.local
+    ingressClassName: nginx
+    path: /
     annotations:
-      kubernetes.io/ingress.class: nginx
-    hosts:
-      - host: keycloak
-        paths:
-          - path: /
-            pathType: Prefix
-            backend:
-              service:
-                name: keycloak
-                port:
-                  number: 8080
-    tls: [] # Ensure no TLS configuration is provided to use HTTP
+      nginx.ingress.kubernetes.io/rewrite-target: /
+    tls: false
+
+  # auth:
+  #   adminUser: admin
+  #   adminPassword: password
+
+  # proxy: edge
+
+  # service:
+  #   type: ClusterIP
+  #   port: 8080
+  #   targetPort: 8080
+  service:
+    type: Clu+sterIP
+    port: 8080
+    targetPort: 8080
+    # nodePorts:
+    #   http: 30080
+
+  readinessProbe:
+    httpGet:
+      path: /realms/master
+      port: http
+    initialDelaySeconds: 60
+    timeoutSeconds: 5
+
+  resources:
+    requests:
+      memory: "512Mi"
+      cpu: "500m"
+    limits:
+      memory: "1Gi"
+      cpu: "1"
 
   postgresql:
     enabled: false
@@ -53,6 +70,8 @@ keycloak:
     existingSecret: ""
 
   extraEnvVars:
+    - name: KEYCLOAK_LOG_LEVEL
+      value: DEBUG
     - name: DB_VENDOR
       value: postgres
     - name: DB_ADDR
