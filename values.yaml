@@ -6,6 +6,7 @@ keycloak:
   replicacount: 1
   kind: deployment
   fullnameOverride: keycloak
+  namespace: bn-project
 
   auth:
     adminUser: admin
@@ -14,12 +15,13 @@ keycloak:
   proxy: edge
 
   service:
-    type: LoadBalancer
+    type: ClusterIP
     port: 8080
     targetPort: 8080
 
   ingress:
     enabled: true
+    hostname: keycloak
     annotations:
       kubernetes.io/ingress.class: nginx
     hosts:
@@ -32,6 +34,7 @@ keycloak:
                 name: keycloak
                 port:
                   number: 8080
+    tls: [] # Ensure no TLS configuration is provided to use HTTP
 
   postgresql:
     enabled: false
@@ -205,4 +208,4 @@ kafka:
 
 
 
-  
+
