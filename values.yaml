@@ -38,20 +38,20 @@ keycloak:
     # nodePorts:
     #   http: 30080
 
-  readinessProbe:
-    httpGet:
-      path: /realms/master
-      port: http
-    initialDelaySeconds: 60
-    timeoutSeconds: 5
+  # readinessProbe:
+  #   httpGet:
+  #     path: /realms/master
+  #     port: http
+  #   initialDelaySeconds: 60
+  #   timeoutSeconds: 5
 
-  resources:
-    requests:
-      memory: "512Mi"
-      cpu: "500m"
-    limits:
-      memory: "1Gi"
-      cpu: "1"
+  # resources:
+  #   requests:
+  #     memory: "512Mi"
+  #     cpu: "500m"
+  #   limits:
+  #     memory: "1Gi"
+  #     cpu: "1"
 
   postgresql:
     enabled: false
