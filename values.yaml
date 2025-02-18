@@ -21,9 +21,9 @@ keycloak:
       nginx.ingress.kubernetes.io/rewrite-target: /
     tls: false
 
-  # auth:
-  #   adminUser: admin
-  #   adminPassword: password
+  auth:
+    adminUser: admin
+    adminPassword: password
 
   # proxy: edge
 
@@ -32,11 +32,9 @@ keycloak:
   #   port: 8080
   #   targetPort: 8080
   service:
-    type: ClusterIP
-    port: 8080
-    targetPort: 8080
-    # nodePorts:
-    #   http: 30080
+    type: NodePort
+    nodePorts:
+      http: 30080
 
   # readinessProbe:
   #   httpGet:
