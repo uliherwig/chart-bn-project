@@ -14,17 +14,6 @@ imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
 
-serviceAccount:
-  # Specifies whether a service account should be created
-  create: true
-  # Automatically mount a ServiceAccount's API credentials?
-  automount: true
-  # Annotations to add to the service account
-  annotations: {}
-  # The name of the service account to use.
-  # If not set and create is true, a name is generated using the fullname template
-  name: "bn-client"
-
 podAnnotations: {}
 podLabels: {}
 
@@ -32,30 +21,33 @@ podSecurityContext: {}
   # fsGroup: 2000
 
 securityContext: {}
-  # capabilities:
-  #   drop:
-  #   - ALL
-  # readOnlyRootFilesystem: true
-  # runAsNonRoot: true
-  # runAsUser: 1000
+
+serviceAccount:
+  create: false
+
+ingress:
+  enabled: false
 
 service:
   type: LoadBalancer
+  loadBalancerIP: 192.168.178.100
   port: 3000
   targetPort: 3000
 
-ingress:
-  enabled: true
-  className: "nginx"
-  annotations:
-    kubernetes.io/ingress.class: "nginx"
-    kubernetes.io/tls-acme: "true"
-  hosts:
-    - host: bn-client.local
-      paths:
-        - path: /
-          pathType: Prefix
-  tls: []
+proxy: edge
+
+# ingress:
+#   enabled: true
+#   className: "nginx"
+#   annotations:
+#     kubernetes.io/ingress.class: "nginx"
+#     kubernetes.io/tls-acme: "true"
+#   hosts:
+#     - host: bn-client.local
+#       paths:
+#         - path: /
+#           pathType: Prefix
+#   tls: []
   #  - secretName: chart-example-tls
   #    hosts:
   #      - chart-example.local

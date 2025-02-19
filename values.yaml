@@ -9,13 +9,13 @@ keycloak:
     adminPassword: "password"
   service:
     type: LoadBalancer # Oder ClusterIP + Ingress, wenn LoadBalancer nicht geht
+    loadBalancerIP: 192.168.178.101
     ports:
-      http: 80
-  ingress:
-    enabled: true
-    hostname: keycloak.local
-    path: /
-    tls: false  # Falls du TLS aktivieren möchtest, dann true setzen
+      http: 8080
+      https: 8443
+
+  # ingress nicht erforderlich wenn metalb verwendet wird    
+
   proxy: edge # Falls Keycloak hinter einem Reverse Proxy steht
 
 
