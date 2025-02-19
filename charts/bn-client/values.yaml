@@ -51,7 +51,7 @@ ingress:
     kubernetes.io/ingress.class: "nginx"
     kubernetes.io/tls-acme: "true"
   hosts:
-    - host: bn-project.local
+    - host: bn-client.local
       paths:
         - path: /
           pathType: Prefix

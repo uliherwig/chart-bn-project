@@ -4,37 +4,30 @@ global:
 
 keycloak:
   replicacount: 1
-  kind: deployment
-  fullnameOverride: keycloak
-  namespace: bn-project
-
-  persistence:
-    enabled: true  
-    existingClaim: keycloak-pvc
-  
+  auth:
+    adminUser: "admin"
+    adminPassword: "password"
+  service:
+    type: LoadBalancer # Oder ClusterIP + Ingress, wenn LoadBalancer nicht geht
+    ports:
+      http: 80
   ingress:
     enabled: true
     hostname: keycloak.local
-    ingressClassName: nginx
     path: /
-    annotations:
-      nginx.ingress.kubernetes.io/rewrite-target: /
-    tls: false
+    tls: false  # Falls du TLS aktivieren möchtest, dann true setzen
+  proxy: edge # Falls Keycloak hinter einem Reverse Proxy steht
 
-  auth:
-    adminUser: admin
-    adminPassword: password
-
-  # proxy: edge
 
   # service:
-  #   type: ClusterIP
+  #   type: LoadBalancer
   #   port: 8080
   #   targetPort: 8080
-  service:
-    type: NodePort
-    nodePorts:
-      http: 30080
+  # service:
+  #   type: NodePort
+  #   nodePorts:
+  #     http: 30080
+
 
   readinessProbe:
     httpGet:
@@ -83,9 +76,6 @@ keycloak:
     - name: KEYCLOAK_IMPORT
       value: /opt/jboss/keycloak/standalone/configuration/config-keycloak.json
 
-
-
-  
   keycloakConfigCli:
     enabled: true
     configuration:
@@ -220,9 +210,3 @@ kafka:
     limits:
       memory: 2Gi
       cpu: 1000m
-
-
-
-
-
-
