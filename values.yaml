@@ -54,7 +54,7 @@ keycloak:
 
   externalDatabase:
     host: "192.168.178.71" # Replace with the actual IP address of your Ubuntu machine
-    database: "keycloak"
+    database: "keycloak_dev"
     user: "keycloak_user"
     password: "password"
     port: 5432
@@ -68,7 +68,7 @@ keycloak:
     - name: DB_ADDR
       value: "192.168.178.71" # Replace with the actual IP address of your Ubuntu machine
     - name: DB_DATABASE
-      value: "keycloak"
+      value: "keycloak_dev"
     - name: DB_USER
       value: "keycloak_user"
     - name: DB_PASSWORD

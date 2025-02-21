@@ -64,7 +64,7 @@ keycloakExtraEnvVars:
     value: btbOPE9TGfTcCD3OmDP4DVvRa2jskaSt
 connectionStringsExtraEnvVars:
   - name: ConnectionStrings__IdentityDbConnection
-    value: Host=192.168.178.71;Port=5432;Database=bn_identity_db;Username=bnproject_user;Password=L7n1P2pp0??13;
+    value: Host=192.168.178.71;Port=5432;Database=bn_identity_dev;Username=bnproject_user;Password=L7n1P2pp0??13;
 
 # ingress:
 #   enabled: true
