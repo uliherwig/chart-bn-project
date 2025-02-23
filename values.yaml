@@ -10,6 +10,9 @@ keycloak:
   service:
     name: keycloak
     type: LoadBalancer # Oder ClusterIP + Ingress, wenn LoadBalancer nicht geht
+    loadBalancerIP: 192.168.178.103
+    port: 8080
+    targetPort: 8080
     ports:
       http: 8080
       https: 8443
@@ -45,12 +48,7 @@ keycloak:
       cpu: "1"
 
   postgresql:
-    enabled: false
-    host: "192.168.178.74" # Replace with the actual IP address of your Ubuntu machine
-    database: "keycloak"
-    user: "keycloak_user"
-    password: "password"
-    port: 5432 
+    enabled: false 
 
   externalDatabase:
     host: "192.168.178.74" # Replace with the actual IP address of your Ubuntu machine
