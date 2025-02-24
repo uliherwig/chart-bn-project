@@ -73,6 +73,27 @@ keycloak:
       value: "password"
     - name: KEYCLOAK_IMPORT
       value: /opt/jboss/keycloak/standalone/configuration/config-keycloak.json
+  
+  extraVolumes:
+    - name: keycloak-config-volume
+      configMap:
+        name: keycloak-config
+
+  extraVolumeMounts:
+    - name: keycloak-config-volume   
+      mountPath: /opt/keycloak/config/config-keycloak.json  # Muss mit dem ConfigMap-Key übereinstimmen
+      subPath: config-keycloak.json
+
+
+    # extraVolumes:
+  #   - name: keycloak-config-volume
+  #     configMap:
+  #       name: keycloak-config
+
+    # extraVolumeMounts:
+  #   - name: keycloak-config-volume
+  #     mountPath: /opt/keycloak/config/config-keycloak.json  # Muss mit dem ConfigMap-Key übereinstimmen
+  #     subPath: config-keycloak.json
 
   keycloakConfigCli:
     enabled: true
