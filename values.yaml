@@ -156,21 +156,5 @@ keycloak:
             ]
         }
 
-kafka:
-  fullnameOverride: kafka
-  zookeeper:
-    enabled: true
-  replicaCount: 1
-  configurationOverrides:
-    server.properties: |
-      listeners=PLAINTEXT://:9092
-      advertised.listeners=PLAINTEXT://localhost:9092
-      zookeeper.connect=zookeeper:2181
-  metrics:
-    kafka:
-      enabled: true
-  persistence:
-    enabled: true
-    size: 8Gi
-    storageClass: ""
+
 
