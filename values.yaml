@@ -65,8 +65,8 @@ keycloak:
       value: "keycloak_user"
     - name: DB_PASSWORD
       value: "password"
-    # - name: KEYCLOAK_IMPORT
-    #   value: /opt/jboss/keycloak/standalone/configuration/config-keycloak.json
+    - name: KEYCLOAK_IMPORT
+      value: /opt/keycloak/config/config-keycloak.json
 
   extraVolumes:
     - name: keycloak-config-volume
