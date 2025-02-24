@@ -4,9 +4,14 @@ global:
 
 keycloak:
   replicacount: 1
+  kind: deployment
+  fullnameOverride: keycloak
+
   auth:
-    adminUser: "admin"
-    adminPassword: "password"
+    adminUser: admin
+    adminPassword: password
+
+  proxy: edge
   service:
     name: keycloak
     type: LoadBalancer # Oder ClusterIP + Ingress, wenn LoadBalancer nicht geht
@@ -19,17 +24,6 @@ keycloak:
 
   # ingress nicht erforderlich wenn metalb verwendet wird    
 
-  proxy: edge # Falls Keycloak hinter einem Reverse Proxy steht
-
-
-  # service:
-  #   type: LoadBalancer
-  #   port: 8080
-  #   targetPort: 8080
-  # service:
-  #   type: NodePort
-  #   nodePorts:
-  #     http: 30080
 
 
   readinessProbe:
@@ -74,26 +68,18 @@ keycloak:
     - name: KEYCLOAK_IMPORT
       value: /opt/jboss/keycloak/standalone/configuration/config-keycloak.json
   
-  extraVolumes:
-    - name: keycloak-config-volume
-      configMap:
-        name: keycloak-config
-
-  extraVolumeMounts:
-    - name: keycloak-config-volume   
-      mountPath: /opt/keycloak/config/config-keycloak.json  # Muss mit dem ConfigMap-Key übereinstimmen
-      subPath: config-keycloak.json
-
-
-    # extraVolumes:
+  # extraVolumes:
   #   - name: keycloak-config-volume
   #     configMap:
   #       name: keycloak-config
 
-    # extraVolumeMounts:
-  #   - name: keycloak-config-volume
+  # extraVolumeMounts:
+  #   - name: keycloak-config-volume   
   #     mountPath: /opt/keycloak/config/config-keycloak.json  # Muss mit dem ConfigMap-Key übereinstimmen
   #     subPath: config-keycloak.json
+
+
+
 
   keycloakConfigCli:
     enabled: true
