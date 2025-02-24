@@ -26,20 +26,20 @@ keycloak:
 
 
 
-  readinessProbe:
-    httpGet:
-      path: /realms/master
-      port: http
-    initialDelaySeconds: 60
-    timeoutSeconds: 5
+  # readinessProbe:
+  #   httpGet:
+  #     path: /realms/master
+  #     port: http
+  #   initialDelaySeconds: 60
+  #   timeoutSeconds: 5
 
-  resources:
-    requests:
-      memory: "512Mi"
-      cpu: "500m"
-    limits:
-      memory: "512Mi"
-      cpu: "1"
+  # resources:
+  #   requests:
+  #     memory: "512Mi"
+  #     cpu: "500m"
+  #   limits:
+  #     memory: "512Mi"
+  #     cpu: "1"
 
   postgresql:
     enabled: false 
@@ -66,20 +66,7 @@ keycloak:
     - name: DB_PASSWORD
       value: "password"
     - name: KEYCLOAK_IMPORT
-      value: /opt/jboss/keycloak_dev/standalone/configuration/config-keycloak.json
-  
-  # extraVolumes:
-  #   - name: keycloak-config-volume
-  #     configMap:
-  #       name: keycloak-config
-
-  # extraVolumeMounts:
-  #   - name: keycloak-config-volume   
-  #     mountPath: /opt/keycloak/config/config-keycloak.json  # Muss mit dem ConfigMap-Key übereinstimmen
-  #     subPath: config-keycloak.json
-
-
-
+      value: /opt/jboss/keycloak/standalone/configuration/config-keycloak.json
 
   keycloakConfigCli:
     enabled: true
