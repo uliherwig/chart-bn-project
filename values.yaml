@@ -18,9 +18,9 @@ keycloak:
     loadBalancerIP: 192.168.178.103
     port: 8080
     targetPort: 8080
-    # ports:
-    #   http: 8080
-    #   https: 8443
+    ports:
+      http: 8080
+      https: 8443
 
   postgresql:
     enabled: false
@@ -136,27 +136,28 @@ keycloak:
             ],
             "clients": [
                 {
-                "clientId": "bn-project-client",
-                "enabled": true,
-                "protocol": "openid-connect",
-                "publicClient": false,
-                "secret": "L7nsaqcDc1QrLSIrKvU0rEjUwgIP2pp0",
-                "redirectUris": [
-                    "*"
-                ],
-                "webOrigins": [
-                    "*"
-                ]
-                },
-                {
-                "clientId": "config-cli",
-                "enabled": true,
-                "clientAuthenticatorType": "client-secret",
-                "secret": "btbOPE9TGfTcCD3OmDP4DVvRa2jskaSt",
-                "directAccessGrantsEnabled": false,
-                "serviceAccountsEnabled": true,
-                "publicClient": false,
-                "protocol": "openid-connect"
+                  "clientId": "bn-project-client",
+                  "enabled": true,
+                  "protocol": "openid-connect",
+                  "publicClient": false,
+                  "secret": "L7nsaqcDc1QrLSIrKvU0rEjUwgIP2pp0",
+                  "redirectUris": [
+                      "*"
+                  ],
+                  "webOrigins": [
+                      "*"
+                  ],
+                  "serviceAccountsEnabled": true, 
+                  },
+                  {
+                  "clientId": "config-cli",
+                  "enabled": true,
+                  "clientAuthenticatorType": "client-secret",
+                  "secret": "btbOPE9TGfTcCD3OmDP4DVvRa2jskaSt",
+                  "directAccessGrantsEnabled": false,
+                  "serviceAccountsEnabled": true,
+                  "publicClient": false,
+                  "protocol": "openid-connect"
                 }
             ]
         }
