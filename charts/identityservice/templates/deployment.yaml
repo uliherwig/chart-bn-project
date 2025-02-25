@@ -30,7 +30,7 @@ spec:
             - sh
             - -c
             - |
-              until curl -sSf http://192.168.178.103:8080/auth/realms/master; do
+              until curl -sSf http://keycloak.local:8080/realms/master/; do
                 echo "Waiting for Keycloak to be ready...";
                 sleep 5;
               done;

@@ -51,9 +51,9 @@ aspnetCoreExtraEnvVars:
     value: Development
 keycloakExtraEnvVars:
   - name: Keycloak__Authority
-    value: http://192.168.178.103:8080/realms/bn-project
+    value: http://keycloak.local:8080/realms/bn-project
   - name: Keycloak__Host
-    value: http://192.168.178.103:8080
+    value: http://keycloak.local:8080
   - name: Keycloak__Realm
     value: bn-project
   - name: Keycloak__ClientId
