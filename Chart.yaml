@@ -4,7 +4,7 @@ description: BN Project Helm Charts
 type: application
 
 # Helm chart version
-version: 1.0.59
+version: 1.0.60
 
 # BN Project version
 appVersion: "0.0.1"
@@ -16,3 +16,6 @@ dependencies:
     version: 24.4.9
     repository: https://charts.bitnami.com/bitnami
 
+  - name: identityservice
+    version: 0.1.0
+  #   repository: "file://charts/identityservice"
