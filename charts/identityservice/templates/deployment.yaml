@@ -23,6 +23,18 @@ spec:
         {{- toYaml . | nindent 8 }}
         {{- end }}
     spec:
+      initContainers:
+        - name: wait-for-keycloak
+          image: appropriate/curl
+          command:
+            - sh
+            - -c
+            - |
+              until curl -sSf http://192.168.178.103:8080/auth/realms/master; do
+                echo "Waiting for Keycloak to be ready...";
+                sleep 5;
+              done;
+
       {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
         {{- toYaml . | nindent 8 }}
