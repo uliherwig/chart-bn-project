@@ -33,6 +33,8 @@ service:
   loadBalancerIP: 192.168.178.102
   port: 3000
   targetPort: 3000
+  selector:
+    app: bn-client
 
 proxy: edge
 
