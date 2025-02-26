@@ -2,169 +2,43 @@ global:
   projectName: bn-project
   appVersion: 0.0.1
 
-keycloak:
-  kind: deployment
-  fullnameOverride: keycloak
+identityservice:
 
-  auth:
-    adminUser: admin
-    adminPassword: password
+  image:
+    repository: "ulihdocker/identityservice"
+    pullPolicy: IfNotPresent
+    tag: "latest"
+
+  nameOverride: "identityservice"
+  fullnameOverride: "identityservice"
+
+  service:
+    type: LoadBalancer
+    port: 5044
+    targetPort: 5044    
+    selector:
+      app: identityservice
 
   proxy: edge
 
-  service:
-    name: keycloak
-    type: LoadBalancer 
-    loadBalancerIP: keycloak.local
-    port: 8080
-    targetPort: 8080
-    ports:
-      http: 8080
-      https: 8443
-    selector:
-      app: keycloak  # Label that matches your pod
-  
-  readinessProbe:
-    httpGet:
-      path: /realms/bn-project
-      port: http
-    initialDelaySeconds: 60
-    timeoutSeconds: 5
-
-  postgresql:
-    enabled: false
-
-  externalDatabase:
-    host: "192.168.178.74" 
-    database: "keycloak"
-    user: "keycloak_user"
-    password: "password"
-    port: 5432
-    existingSecret: ""
-
-  extraEnvVars:
-    - name: DB_VENDOR
-      value: postgres
-    - name: DB_ADDR
-      value: "192.168.178.74" 
-    - name: DB_DATABASE
-      value: "keycloak"
-    - name: DB_USER
-      value: "keycloak_user"
-    - name: DB_PASSWORD
-      value: "password"
-    - name: KEYCLOAK_IMPORT
-      value: /opt/jboss/keycloak/standalone/configuration/config-keycloak.json
-  
-  keycloakConfigCli:
-    enabled: true
-    configuration:
-      config-keycloak.json: |
-        {
-            "id": "bn-project",
-            "realm": "bn-project",
-            "enabled": true,
-            "roles": {
-                "realm": [
-                {
-                    "name": "admin",
-                    "description": "Administrator role with full access"
-                },
-                {
-                    "name": "user",
-                    "description": "User role with limited access"
-                },
-                {
-                    "name": "guest",
-                    "description": "Guest role with minimal access"
-                }
-                ]
-            },
-            "users": [
-                {
-                "username": "bn-admin",
-                "email": "bn_admin@test.de",
-                "firstName": "Uli",
-                "lastName": "Herwig",
-                "enabled": true,
-                "emailVerified": true,
-                "credentials": [
-                    {
-                    "type": "password",
-                    "value": "Giwreh#1",
-                    "temporary": false
-                    }
-                ],
-                "realmRoles": [
-                    "admin"
-                ]
-                },
-                {
-                "username": "bn-user",
-                "email": "bn_user@test.de",
-                "firstName": "John",
-                "lastName": "Doe",
-                "enabled": true,
-                "emailVerified": true,
-                "credentials": [
-                    {
-                    "type": "password",
-                    "value": "Giwreh#1",
-                    "temporary": false
-                    }
-                ],
-                "realmRoles": [
-                    "user"
-                ]
-                },
-                {
-                "username": "service-account-config-cli",
-                "enabled": true,
-                "serviceAccountClientId": "config-cli",
-                "realmRoles": [
-                    "uma_authorization",
-                    "offline_access",
-                    "admin"
-                ],
-                "clientRoles": {
-                    "realm-management": [
-                    "realm-admin"
-                    ],
-                    "account": [
-                    "view-profile",
-                    "manage-account"
-                    ]
-                },
-                "notBefore": 0
-                }
-            ],
-            "clients": [
-                {
-                  "clientId": "bn-project-client",
-                  "enabled": true,
-                  "protocol": "openid-connect",
-                  "publicClient": false,
-                  "secret": "L7nsaqcDc1QrLSIrKvU0rEjUwgIP2pp0",
-                  "redirectUris": [
-                      "*"
-                  ],
-                  "webOrigins": [
-                      "*"
-                  ],
-                  "serviceAccountsEnabled": true, 
-                  },
-                  {
-                  "clientId": "config-cli",
-                  "enabled": true,
-                  "clientAuthenticatorType": "client-secret",
-                  "secret": "btbOPE9TGfTcCD3OmDP4DVvRa2jskaSt",
-                  "directAccessGrantsEnabled": false,
-                  "serviceAccountsEnabled": true,
-                  "publicClient": false,
-                  "protocol": "openid-connect"
-                }
-            ]
-        }
+  aspnetCoreExtraEnvVars:
+    - name: ASPNETCORE_URLS
+      value: http://+:5044
+    - name: ASPNETCORE_ENVIRONMENT
+      value: Development
+  keycloakExtraEnvVars:
+    - name: Keycloak__Authority
+      value: http://keycloak.local:8080/realms/bn-project
+    - name: Keycloak__Host
+      value: http://keycloak.local:8080
+    - name: Keycloak__Realm
+      value: bn-project
+    - name: Keycloak__ClientId
+      value: bn-project-client
+    - name: Keycloak__ClientSecret
+      value: L7nsaqcDc1QrLSIrKvU0rEjUwgIP2pp0
+    - name: Keycloak__AdminClientId
+      value: config-cli
 
 
 

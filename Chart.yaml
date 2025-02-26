@@ -4,7 +4,7 @@ description: BN Project Helm Charts
 type: application
 
 # Helm chart version
-version: 1.0.63
+version: 1.1.0
 
 # BN Project version
 appVersion: "0.0.1"
@@ -12,11 +12,5 @@ appVersion: "0.0.1"
 dependencies:
   - name: bn-client
     version: 0.1.0
-  - name: keycloak
-    version: 24.4.9
-    repository: https://charts.bitnami.com/bitnami
-    condition: keycloak.enabled
-
   - name: identityservice
     version: 0.1.0
-  #   repository: "file://charts/identityservice"
