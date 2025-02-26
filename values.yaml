@@ -28,9 +28,9 @@ identityservice:
       value: Development
   keycloakExtraEnvVars:
     - name: Keycloak__Authority
-      value: http://keycloak.dev:8080/realms/bn-project
+      value: http://keycloak.bn-auth.svc.cluster.local:8080/realms/bn-project
     - name: Keycloak__Host
-      value: http://keycloak.dev:8080
+      value: http://keycloak.bn-auth.svc.cluster.local:8080
     - name: Keycloak__Realm
       value: bn-project
     - name: Keycloak__ClientId
