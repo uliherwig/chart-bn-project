@@ -28,9 +28,9 @@ identityservice:
       value: Development
   keycloakExtraEnvVars:
     - name: Keycloak__Authority
-      value: http://keycloak.local:8080/realms/bn-project
+      value: http://keycloak.dev:8080/realms/bn-project
     - name: Keycloak__Host
-      value: http://keycloak.local:8080
+      value: http://keycloak.dev:8080
     - name: Keycloak__Realm
       value: bn-project
     - name: Keycloak__ClientId
@@ -39,6 +39,9 @@ identityservice:
       value: L7nsaqcDc1QrLSIrKvU0rEjUwgIP2pp0
     - name: Keycloak__AdminClientId
       value: config-cli
+connectionStringsExtraEnvVars:
+  - name: ConnectionStrings__IdentityDbConnection
+    value: Host=192.168.178.74;Port=5432;Database=bn_identity_dev;Username=bnproject_user;Password=L7n1P2pp0??13;
 
 
 

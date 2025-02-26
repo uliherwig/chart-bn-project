@@ -37,15 +37,15 @@ spec:
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           env:
-            {{- range .Values.global.aspnetCoreExtraEnvVars }}
+            {{- range .Values.aspnetCoreExtraEnvVars }}
             - name: {{ .name }}
               value: {{ .value | quote }}
             {{- end }}
-            {{- range .Values.global.keycloakExtraEnvVars }}
+            {{- range .Values.keycloakExtraEnvVars }}
             - name: {{ .name }}
               value: {{ .value | quote }}
             {{- end }}
-            {{- range .Values.global.connectionStringsExtraEnvVars }}
+            {{- range .Values.connectionStringsExtraEnvVars }}
             - name: {{ .name }}
               value: {{ .value | quote }}
             {{- end }}
