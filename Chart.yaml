@@ -1,10 +1,10 @@
 apiVersion: v2
-name: bn-project
-description: BN Project Helm Charts
+name: bn-auth
+description: BN Project Helm Charts Keycloak
 type: application
 
 # Helm chart version
-version: 1.0.1
+version: 1.0.2
 
 # BN Project version
 appVersion: "0.0.1"

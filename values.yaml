@@ -15,7 +15,7 @@ keycloak:
   service:
     name: keycloak
     type: LoadBalancer 
-    loadBalancerIP: keycloak.local
+    loadBalancerIP: 192.168.178.103
     port: 8080
     targetPort: 8080
     ports:
