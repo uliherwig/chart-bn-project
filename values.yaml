@@ -23,7 +23,7 @@ identityservice:
 
   aspnetCoreExtraEnvVars:
     - name: ASPNETCORE_URLS
-      value: http://+:5044
+      value: "http://+:5044;https://+:7283"
     - name: ASPNETCORE_ENVIRONMENT
       value: Development
   keycloakExtraEnvVars:
