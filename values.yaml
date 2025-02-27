@@ -13,17 +13,9 @@ identityservice:
   fullnameOverride: "identityservice"
 
   service:
-    type: LoadBalancer
+    type: ClusterIP
     port: 5044
-    ports:
-      - name: http
-        port: 5044
-        targetPort: 5044
-        protocol: TCP
-      - name: https
-        port: 7283
-        targetPort: 7283
-        protocol: TCP   
+    targetPort: 5044    
     selector:
       app: identityservice
 
@@ -34,13 +26,6 @@ identityservice:
     value: "https://+:7283;http://+:5044"
   - name: ASPNETCORE_ENVIRONMENT
     value: Development
-  - name: ASPNETCORE_Kestrel__Certificates__Default__Path
-    value: "/https/identityservice.pfx"
-  - name: ASPNETCORE_Kestrel__Certificates__Default__Password
-    valueFrom:
-      secretKeyRef:
-        name: identityservice-cert
-        key: identityservice.pfx
   keycloakExtraEnvVars:
     - name: Keycloak__Authority
       value: http://keycloak.bn-auth.svc.cluster.local:8080/realms/bn-project
@@ -57,16 +42,6 @@ identityservice:
   connectionStringsExtraEnvVars:
     - name: ConnectionStrings__IdentityDbConnection
       value: Host=192.168.178.74;Port=5432;Database=bn_identity_dev;Username=bnproject_user;Password=L7n1P2pp0??13;
-
-  volumes:
-    - name: identityservice-cert
-      secret:
-        secretName: identityservice-cert
-
-  volumeMounts:
-    - name: identityservice-cert
-      mountPath: "/https"
-      readOnly: true
 
 
 
