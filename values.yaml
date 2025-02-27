@@ -6,8 +6,8 @@ identityservice:
 
   image:
     repository: "ulihdocker/identityservice"
-    pullPolicy: IfNotPresent
-    tag: "v-1.0.0"
+    pullPolicy: Always
+    tag: "latest"
 
   nameOverride: "identityservice"
   fullnameOverride: "identityservice"
