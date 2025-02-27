@@ -7,7 +7,7 @@ identityservice:
   image:
     repository: "ulihdocker/identityservice"
     pullPolicy: IfNotPresent
-    tag: "latest"
+    tag: "v-1.0.0"
 
   nameOverride: "identityservice"
   fullnameOverride: "identityservice"
@@ -23,7 +23,7 @@ identityservice:
 
   aspnetCoreExtraEnvVars:
   - name: ASPNETCORE_URLS
-    value: "https://+:7283;http://+:5044"
+    value: "http://+:5044"
   - name: ASPNETCORE_ENVIRONMENT
     value: Development
   keycloakExtraEnvVars:
