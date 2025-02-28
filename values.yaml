@@ -21,6 +21,19 @@ identityservice:
 
   proxy: edge
 
+  livenessProbe:
+    httpGet:
+      path: /health
+      port: http
+    initialDelaySeconds: 15
+    periodSeconds: 5     
+  readinessProbe:
+    httpGet:
+      path: /health
+      port: http
+    initialDelaySeconds: 15  
+    periodSeconds: 5
+
   aspnetCoreExtraEnvVars:
   - name: ASPNETCORE_URLS
     value: "http://+:5044"
