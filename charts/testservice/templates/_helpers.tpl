@@ -1,7 +1,7 @@
 {{/*
 Expand the name of the chart.
 */}}
-{{- define "identityservice.name" -}}
+{{- define "testservice.name" -}}
 {{- default .Chart.Name .Values.nameOverride | trunc 63 | trimSuffix "-" }}
 {{- end }}
 
@@ -10,7 +10,7 @@ Create a default fully qualified app name.
 We truncate at 63 chars because some Kubernetes name fields are limited to this (by the DNS naming spec).
 If release name contains chart name it will be used as a full name.
 */}}
-{{- define "identityservice.fullname" -}}
+{{- define "testservice.fullname" -}}
 {{- if .Values.fullnameOverride }}
 {{- .Values.fullnameOverride | trunc 63 | trimSuffix "-" }}
 {{- else }}
@@ -26,16 +26,16 @@ If release name contains chart name it will be used as a full name.
 {{/*
 Create chart name and version as used by the chart label.
 */}}
-{{- define "identityservice.chart" -}}
+{{- define "testservice.chart" -}}
 {{- printf "%s-%s" .Chart.Name .Chart.Version | replace "+" "_" | trunc 63 | trimSuffix "-" }}
 {{- end }}
 
 {{/*
 Common labels
 */}}
-{{- define "identityservice.labels" -}}
-helm.sh/chart: {{ include "identityservice.chart" . }}
-{{ include "identityservice.selectorLabels" . }}
+{{- define "testservice.labels" -}}
+helm.sh/chart: {{ include "testservice.chart" . }}
+{{ include "testservice.selectorLabels" . }}
 {{- if .Chart.AppVersion }}
 app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
 {{- end }}
@@ -45,17 +45,17 @@ app.kubernetes.io/managed-by: {{ .Release.Service }}
 {{/*
 Selector labels
 */}}
-{{- define "identityservice.selectorLabels" -}}
-app.kubernetes.io/name: {{ include "identityservice.name" . }}
+{{- define "testservice.selectorLabels" -}}
+app.kubernetes.io/name: {{ include "testservice.name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end }}
 
 {{/*
 Create the name of the service account to use
 */}}
-{{- define "identityservice.serviceAccountName" -}}
+{{- define "testservice.serviceAccountName" -}}
 {{- if .Values.serviceAccount.create }}
-{{- default (include "identityservice.fullname" .) .Values.serviceAccount.name }}
+{{- default (include "testservice.fullname" .) .Values.serviceAccount.name }}
 {{- else }}
 {{- default "default" .Values.serviceAccount.name }}
 {{- end }}
