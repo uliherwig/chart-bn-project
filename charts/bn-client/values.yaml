@@ -41,7 +41,7 @@ proxy: edge
 env:
   ALPACA_API_URL: http://alpacaservice.bn-project.svc.cluster.local:5130
   STRATEGY_API_URL: http://strategyservice.bn-project.svc.cluster.local:5101
-  IDENTITY_API_URL: http://identityservice.bn-project.svc.cluster.local:9020
+  IDENTITY_API_URL: http://identityservice.bn-project.svc.cluster.local:5044
   NEXTAUTH_URL: http://new-nextauth-url:3000
   NEXTAUTH_SECRET: zEx8XJH1SQXt1uuK097QBnTkoe/Bt1gMTba0pFQyHHQ=
   SESSION_SECRET: vI++GlJrqktQu5F7zWlsRnpKvqOJlsrH4PYFYM0XwI8=
