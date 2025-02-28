@@ -4,10 +4,10 @@ description: BN Project Helm Charts
 type: application
 
 # Helm chart version
-version: 0.0.1
+version: 0.0.2
 
 # BN Project version
-appVersion: "0.0.1"
+appVersion: "0.0.2"
 
 dependencies:
   - name: bn-client

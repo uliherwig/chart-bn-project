@@ -2,13 +2,13 @@ apiVersion: v1
 entries:
   bn-project:
   - apiVersion: v2
-    appVersion: 0.0.1
+    appVersion: 0.0.2
     created: "2025-01-16T11:10:09.5986162+01:00"
     description: A Helm chart for Kubernetes
     digest: 2ec6cce3b3225799c07b2cb79249540157e065570e7ead3ab7bcc87d5999a206
     name: bn-project
     type: application
     urls:
-    - bn-project-0.0.1.tgz
-    version: 0.0.1
+    - bn-project-0.0.2.tgz
+    version: 0.0.2
 generated: "2025-01-16T11:10:09.5975876+01:00"
