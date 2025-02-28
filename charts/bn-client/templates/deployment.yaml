@@ -36,6 +36,19 @@ spec:
             {{- toYaml .Values.securityContext | nindent 12 }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
+          env:
+            - name: ALPACA_API_URL
+              value: {{ .Values.env.ALPACA_API_URL | quote }}
+            - name: STRATEGY_API_URL
+              value: {{ .Values.env.STRATEGY_API_URL | quote }}
+            - name: IDENTITY_API_URL
+              value: {{ .Values.env.IDENTITY_API_URL | quote }}
+            - name: NEXTAUTH_URL
+              value: {{ .Values.env.NEXTAUTH_URL | quote }}
+            - name: NEXTAUTH_SECRET
+              value: {{ .Values.env.NEXTAUTH_SECRET | quote }}
+            - name: SESSION_SECRET
+              value: {{ .Values.env.SESSION_SECRET | quote }}
           ports:
             - name: http
               containerPort: {{ .Values.service.port }}

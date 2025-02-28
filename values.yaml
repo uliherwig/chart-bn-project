@@ -13,7 +13,7 @@ identityservice:
   fullnameOverride: "identityservice"
 
   service:
-    type: LoadBalancer
+    type: ClusterIP
     port: 5044
     targetPort: 5044    
     selector:
