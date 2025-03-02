@@ -54,7 +54,7 @@ alpacaservice:
     - name: Keycloak__AdminClientId
       value: config-cli
   connectionStringsExtraEnvVars:
-    - name: ConnectionStrings__IdentityDbConnection
+    - name: ConnectionStrings__AlpacaDbConnection
       value: Host=192.168.178.74;Port=5432;Database=bn_alpaca_dev;Username=bnproject_user;Password=L7n1P2pp0??13;
 
 
