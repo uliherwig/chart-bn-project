@@ -3,37 +3,6 @@ global:
   appVersion: 0.0.1
 
 identityservice:
-
-  image:
-    repository: "ulihdocker/identityservice"
-    pullPolicy: Always
-    tag: "latest"
-
-  nameOverride: "identityservice"
-  fullnameOverride: "identityservice"
-
-  service:
-    type: ClusterIP
-    port: 5044
-    targetPort: 5044    
-    selector:
-      app: identityservice
-
-  proxy: edge
-
-  livenessProbe:
-    httpGet:
-      path: /health
-      port: http
-    initialDelaySeconds: 15
-    periodSeconds: 5     
-  readinessProbe:
-    httpGet:
-      path: /health
-      port: http
-    initialDelaySeconds: 15  
-    periodSeconds: 5
-
   aspnetCoreExtraEnvVars:
   - name: ASPNETCORE_URLS
     value: "http://+:5044"
@@ -55,6 +24,39 @@ identityservice:
   connectionStringsExtraEnvVars:
     - name: ConnectionStrings__IdentityDbConnection
       value: Host=192.168.178.74;Port=5432;Database=bn_identity_dev;Username=bnproject_user;Password=L7n1P2pp0??13;
+
+alpacaservice:
+  aspnetCoreExtraEnvVars:
+  - name: ASPNETCORE_URLS
+    value: "http://+:5130"
+  - name: ASPNETCORE_ENVIRONMENT
+    value: Development
+  - name: Alpaca__BASE_URL
+    value: https://paper-api.alpaca.markets/v2
+  - name: Alpaca__KEY_ID
+    value: PK5C9YPF0LDNH2XGYCX8
+  - name: Alpaca__SECRET_KEY
+    value: OdnTABtFjgm1dl76RoZMlazyvLuGqCCEDiGSfc9S
+  - name: Alpaca__TRADED_ASSETS
+    value: SPY,AAPL,MSFT,TSLA,AMZN,NVDA,GOOGL,META,AMD,NFLX,BABA,BRK.B,BA,JPM,XOM,V,DIS,INTC,PFE,WMT,DIA,QQQ,EWG,SAP,DTE,ALV,UNH,GS,HD,JNJ,PG,KO,MCD,CVX
+
+  keycloakExtraEnvVars:
+    - name: Keycloak__Authority
+      value: http://keycloak.bn-auth.svc.cluster.local:8080/realms/bn-project
+    - name: Keycloak__Host
+      value: http://keycloak.bn-auth.svc.cluster.local:8080
+    - name: Keycloak__Realm
+      value: bn-project
+    - name: Keycloak__ClientId
+      value: bn-project-client
+    - name: Keycloak__ClientSecret
+      value: L7nsaqcDc1QrLSIrKvU0rEjUwgIP2pp0
+    - name: Keycloak__AdminClientId
+      value: config-cli
+  connectionStringsExtraEnvVars:
+    - name: ConnectionStrings__IdentityDbConnection
+      value: Host=192.168.178.74;Port=5432;Database=bn_alpaca_dev;Username=bnproject_user;Password=L7n1P2pp0??13;
+
 
 
 

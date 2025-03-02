@@ -1,23 +1,23 @@
-# Default values for identityservice.
+# Default values for alpacaservice.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
 replicaCount: 1
 
 image:
-  repository: "ulihdocker/identityservice"
+  repository: "ulihdocker/alpacaservice"
   pullPolicy: Always
   tag: "latest"
 
-nameOverride: "identityservice"
-fullnameOverride: "identityservice"
+nameOverride: "alpacaservice"
+fullnameOverride: "alpacaservice"
 
 service:
   type: ClusterIP
-  port: 5044
-  targetPort: 5044    
+  port: 5130
+  targetPort: 5130    
   selector:
-    app: identityservice
+    app: alpacaservice
 proxy: edge
 
 livenessProbe:
