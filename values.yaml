@@ -40,7 +40,7 @@ alpacaservice:
     - name: Alpaca__TRADED_ASSETS
       value: SPY,AAPL,MSFT,TSLA,AMZN,NVDA,GOOGL,META,AMD,NFLX,BABA,BRK.B,BA,JPM,XOM,V,DIS,INTC,PFE,WMT,DIA,QQQ,EWG,SAP,DTE,ALV,UNH,GS,HD,JNJ,PG,KO,MCD,CVX
     - name: KafkaServer
-      value: http://alpacaservice.bn-project.svc.cluster.local:9092
+      value: http://kafka.bn-project.svc.cluster.local:9092
 
   keycloakExtraEnvVars:
     - name: Keycloak__Authority
@@ -66,7 +66,7 @@ strategyservice:
     - name: ASPNETCORE_ENVIRONMENT
       value: Development
     - name: KafkaServer
-      value: http://alpacaservice.bn-project.svc.cluster.local:9092
+      value: http://kafka.bn-project.svc.cluster.local:9092
   keycloakExtraEnvVars:
     - name: Keycloak__Authority
       value: http://keycloak.bn-auth.svc.cluster.local:8080/realms/bn-project
