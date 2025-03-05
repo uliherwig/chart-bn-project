@@ -39,8 +39,8 @@ alpacaservice:
       value: OdnTABtFjgm1dl76RoZMlazyvLuGqCCEDiGSfc9S
     - name: Alpaca__TRADED_ASSETS
       value: SPY,AAPL,MSFT,TSLA,AMZN,NVDA,GOOGL,META,AMD,NFLX,BABA,BRK.B,BA,JPM,XOM,V,DIS,INTC,PFE,WMT,DIA,QQQ,EWG,SAP,DTE,ALV,UNH,GS,HD,JNJ,PG,KO,MCD,CVX
-    - name: KafkaServer
-      value: http://kafka.bn-project.svc.cluster.local:9092
+    - name: Kafka__BootstrapServers
+      value: kafka-release-2.kafka-release-headless.kafka.svc.cluster.local:9092,kafka-release-1.kafka-release-headless.kafka.svc.cluster.local:9092,kafka-release-0.kafka-release-headless.kafka.svc.cluster.local:9092 
     - name: StrategyServiceClient
       value: http://strategyservice.bn-project.svc.cluster.local:5101
 
@@ -69,8 +69,8 @@ strategyservice:
       value: "http://+:5101"
     - name: ASPNETCORE_ENVIRONMENT
       value: Development
-    - name: KafkaServer
-      value: http://kafka.bn-project.svc.cluster.local:9092
+    - name: Kafka__BootstrapServers
+      value: kafka-release-2.kafka-release-headless.kafka.svc.cluster.local:9092,kafka-release-1.kafka-release-headless.kafka.svc.cluster.local:9092,kafka-release-0.kafka-release-headless.kafka.svc.cluster.local:9092 
   keycloakExtraEnvVars:
     - name: Keycloak__Authority
       value: http://keycloak.bn-auth.svc.cluster.local:8080/realms/bn-project
