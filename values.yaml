@@ -21,6 +21,12 @@ identityservice:
       value: L7nsaqcDc1QrLSIrKvU0rEjUwgIP2pp0
     - name: Keycloak__AdminClientId
       value: config-cli
+    - name: Email__Host
+      value: mail.local
+    - name: Email__Port
+      value: 25
+    - name: Email__From
+      value: uli@devserver
   connectionStringsExtraEnvVars:
     - name: ConnectionStrings__IdentityDbConnection
       value: Host=192.168.178.74;Port=5432;Database=bn_identity_dev;Username=bnproject_user;Password=L7n1P2pp0??13;
