@@ -22,7 +22,7 @@ identityservice:
     - name: Keycloak__AdminClientId
       value: config-cli
     - name: Email__Host
-      value: mail.local
+      value: 192.168.178.74
     - name: Email__Port
       value: 25
     - name: Email__From
