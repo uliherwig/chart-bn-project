@@ -49,8 +49,10 @@ alpacaservice:
       value: kafka-release-2.kafka-release-headless.kafka.svc.cluster.local:9092,kafka-release-1.kafka-release-headless.kafka.svc.cluster.local:9092,kafka-release-0.kafka-release-headless.kafka.svc.cluster.local:9092 
     - name: StrategyServiceClient
       value: http://strategyservice.bn-project.svc.cluster.local:5101
-
-
+    - name: UpdateAlpacaDb__Enabled
+      value: false
+    - name: UpdateAlpacaDb__IntervalInMinutes
+      value: 120
 
   keycloakExtraEnvVars:
     - name: Keycloak__Authority
