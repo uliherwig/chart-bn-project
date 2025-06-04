@@ -46,11 +46,11 @@ alpacaservice:
     - name: Alpaca__TRADED_ASSETS
       value: SPY,AAPL,MSFT,TSLA,AMZN,NVDA,GOOGL,META,AMD,NFLX,BABA,BRK.B,BA,JPM,XOM,V,DIS,INTC,PFE,WMT,DIA,QQQ,EWG,SAP,DTE,ALV,UNH,GS,HD,JNJ,PG,KO,MCD,CVX
     - name: Kafka__BootstrapServers
-      value: kafka.kafka.svc.cluster.local:9092 
+      value: kafka.default.svc.cluster.local:9092 
     - name: StrategyServiceClient
       value: http://strategyservice.bn-project.svc.cluster.local:5101
     - name: UpdateAlpacaDb__Enabled
-      value: false
+      value: true
     - name: UpdateAlpacaDb__IntervalInMinutes
       value: 120
 
@@ -78,7 +78,7 @@ strategyservice:
     - name: ASPNETCORE_ENVIRONMENT
       value: Development
     - name: Kafka__BootstrapServers
-      value: kafka.kafka.svc.cluster.local:9092 
+      value: kafka.default.svc.cluster.local:9092 
   keycloakExtraEnvVars:
     - name: Keycloak__Authority
       value: http://keycloak.bn-auth.svc.cluster.local:8080/realms/bn-project

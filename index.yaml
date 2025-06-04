@@ -3,12 +3,48 @@ entries:
   bn-project:
   - apiVersion: v2
     appVersion: 0.0.1
-    created: "2025-01-16T11:10:09.5986162+01:00"
-    description: A Helm chart for Kubernetes
-    digest: 2ec6cce3b3225799c07b2cb79249540157e065570e7ead3ab7bcc87d5999a205
+    created: "2025-06-04T17:42:10.7540818+02:00"
+    dependencies:
+    - name: bn-client
+      repository: ""
+      version: 0.1.0
+    - name: identityservice
+      repository: ""
+      version: 0.1.0
+    - name: alpacaservice
+      repository: ""
+      version: 0.1.0
+    - name: strategyservice
+      repository: ""
+      version: 0.1.0
+    description: BN Project Helm Charts
+    digest: 68e5e4da5d61579d9c3f2fa08f5dd559719c677d009a05f8c8ca1f4418cb49cb
+    name: bn-project
+    type: application
+    urls:
+    - bn-project-1.1.24.tgz
+    version: 1.1.24
+  - apiVersion: v2
+    appVersion: 0.0.1
+    created: "2025-06-04T17:42:10.751916+02:00"
+    dependencies:
+    - name: bn-client
+      repository: ""
+      version: 0.1.0
+    - name: identityservice
+      repository: ""
+      version: 0.1.0
+    - name: alpacaservice
+      repository: ""
+      version: 0.1.0
+    - name: strategyservice
+      repository: ""
+      version: 0.1.0
+    description: BN Project Helm Charts
+    digest: f766f61f1cc12652c4f8bec3ef4678feacedf2b7483e7215f90494a15ed7a8fd
     name: bn-project
     type: application
     urls:
     - bn-project-1.1.23.tgz
     version: 1.1.23
-generated: "2025-01-16T11:10:09.5975876+01:00"
+generated: "2025-06-04T17:42:10.7502597+02:00"
