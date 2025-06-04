@@ -3,7 +3,7 @@ entries:
   bn-project:
   - apiVersion: v2
     appVersion: 0.0.1
-    created: "2025-06-04T17:42:10.7540818+02:00"
+    created: "2025-06-04T17:48:19.8640107+02:00"
     dependencies:
     - name: bn-client
       repository: ""
@@ -18,33 +18,10 @@ entries:
       repository: ""
       version: 0.1.0
     description: BN Project Helm Charts
-    digest: 68e5e4da5d61579d9c3f2fa08f5dd559719c677d009a05f8c8ca1f4418cb49cb
+    digest: 78b05f969b82f3f30f4d2f751b9ec6b875baca940208b5abdc1bc3b46035efd9
     name: bn-project
     type: application
     urls:
-    - bn-project-1.1.24.tgz
-    version: 1.1.24
-  - apiVersion: v2
-    appVersion: 0.0.1
-    created: "2025-06-04T17:42:10.751916+02:00"
-    dependencies:
-    - name: bn-client
-      repository: ""
-      version: 0.1.0
-    - name: identityservice
-      repository: ""
-      version: 0.1.0
-    - name: alpacaservice
-      repository: ""
-      version: 0.1.0
-    - name: strategyservice
-      repository: ""
-      version: 0.1.0
-    description: BN Project Helm Charts
-    digest: f766f61f1cc12652c4f8bec3ef4678feacedf2b7483e7215f90494a15ed7a8fd
-    name: bn-project
-    type: application
-    urls:
-    - bn-project-1.1.23.tgz
-    version: 1.1.23
-generated: "2025-06-04T17:42:10.7502597+02:00"
+    - bn-project-1.1.25.tgz
+    version: 1.1.25
+generated: "2025-06-04T17:48:19.8592703+02:00"
