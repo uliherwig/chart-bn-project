@@ -3,7 +3,7 @@ entries:
   bn-project:
   - apiVersion: v2
     appVersion: 0.0.1
-    created: "2025-06-04T17:48:19.8640107+02:00"
+    created: "2025-06-06T08:42:56.879459+02:00"
     dependencies:
     - name: bn-client
       repository: ""
@@ -18,10 +18,10 @@ entries:
       repository: ""
       version: 0.1.0
     description: BN Project Helm Charts
-    digest: 78b05f969b82f3f30f4d2f751b9ec6b875baca940208b5abdc1bc3b46035efd9
+    digest: 9314a414f5126e7b851a16b2b9f61b775e82c0fbcb255695dd08b0ddebba6c44
     name: bn-project
     type: application
     urls:
-    - bn-project-1.1.25.tgz
-    version: 1.1.25
-generated: "2025-06-04T17:48:19.8592703+02:00"
+    - bn-project-1.1.26.tgz
+    version: 1.1.26
+generated: "2025-06-06T08:42:56.8757781+02:00"

@@ -49,7 +49,7 @@ alpacaservice:
       value: kafka.default.svc.cluster.local:9092 
     - name: StrategyServiceClient
       value: http://strategyservice.bn-project.svc.cluster.local:5101
-    - name: Redis_Connection
+    - name: RedisConnection
       value: redis.default.svc.cluster.local:6379
     - name: UpdateAlpacaDb__Enabled
       value: true
