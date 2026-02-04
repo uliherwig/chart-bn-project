@@ -2,9 +2,9 @@ apiVersion: v2
 name: bn-project
 description: BN Project Helm Charts
 type: application
-
+icon: https://example.com/path/to/icon.png
 # Helm chart version
-version: 1.1.27
+version: 1.1.28
 
 # BN Project version
 appVersion: "0.0.1"
@@ -17,4 +17,6 @@ dependencies:
   - name: alpacaservice
     version: 0.1.0
   - name: strategyservice
+    version: 0.1.0
+  - name: notificationservice
     version: 0.1.0

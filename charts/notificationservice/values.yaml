@@ -1,0 +1,59 @@
+# Default values for notificationservice.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+replicaCount: 1
+
+image:
+  repository: "ulihdocker/notificationservice"
+  pullPolicy: Always
+  tag: "latest"
+
+nameOverride: "notificationservice"
+fullnameOverride: "notificationservice"
+
+service:
+  type: ClusterIP
+  port: 5254
+  targetPort: 5254    
+  selector:
+    app: notificationservice
+proxy: edge
+
+livenessProbe:
+  httpGet:
+    path: /health
+    port: http
+  initialDelaySeconds: 20
+  periodSeconds: 5     
+readinessProbe:
+  httpGet:
+    path: /health
+    port: http
+  initialDelaySeconds: 15  
+  periodSeconds: 5
+
+resources: {}
+
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 100
+  targetCPUUtilizationPercentage: 80
+  # targetMemoryUtilizationPercentage: 80
+
+serviceAccount:
+  create: false
+
+ingress:
+  enabled: false
+
+volumes: []
+
+volumeMounts: []
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
