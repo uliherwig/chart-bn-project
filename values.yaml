@@ -1,6 +1,36 @@
 global:
   projectName: bn-project
   appVersion: 0.0.1
+  services:
+    identity:
+      url: http://identityservice.bn-project.svc.cluster.local:5044
+    strategy:
+      url: http://strategyservice.bn-project.svc.cluster.local:5101
+    alpaca:
+      url: http://alpacaservice.bn-project.svc.cluster.local:5130
+    finai:
+      url: http://finaiservice.bn-project.svc.cluster.local:8000
+    ui:
+      url: http://localhost:3000
+  # --- Keycloak ---
+  keycloak:
+    host: http://keycloak.bn-auth.svc.cluster.local:8080
+    realm: bn-project
+    clientId: bn-project-client
+    clientSecret: L7nsaqcDc1QrLSIrKvU0rEjUwgIP2pp0
+    adminClientId: config-cli
+
+  # --- PostgreSQL ---
+  postgresql:
+    host: 192.168.178.74
+    port: 5432
+    username: bnproject_user
+    password: L7n1P2pp0??13
+
+  # --- Redis ---
+  redis:
+    host: redis-master.default.svc.cluster.local
+    port: 6379
 
 identityservice:
   aspnetCoreExtraEnvVars:
@@ -28,14 +58,14 @@ identityservice:
     - name: Email__From
       value: uli@mail.local
     - name: StrategyServiceClient
-      value: http://strategyservice.bn-project.svc.cluster.local:5101
+      value: "{{ .Values.global.services.strategy.url }}"
     - name: AlpacaServiceClient
-      value: http://alpacaservice.bn-project.svc.cluster.local:5130
+      value: "{{ .Values.global.services.alpaca.url }}"
     - name: UI
-      value: http://localhost:3000
+      value: "{{ .Values.global.services.ui.url }}"
   connectionStringsExtraEnvVars:
     - name: ConnectionStrings__IdentityDbConnection
-      value: Host=192.168.178.74;Port=5432;Database=bn_identity_dev;Username=bnproject_user;Password=L7n1P2pp0??13;
+      value: "Host={{ .Values.global.postgresql.host }};Port={{ .Values.global.postgresql.port }};Database=bn_identity_dev;Username={{ .Values.global.postgresql.username }};Password={{ .Values.global.postgresql.password }}"
 
 alpacaservice:
   aspnetCoreExtraEnvVars:
@@ -52,11 +82,11 @@ alpacaservice:
     - name: Alpaca__TRADED_ASSETS
       value: SPY,AAPL,MSFT,TSLA,AMZN,NVDA,GOOGL,META,AMD,NFLX,BABA,BRK.B,BA,JPM,XOM,V,DIS,INTC,PFE,WMT,DIA,QQQ,EWG,SAP,DTE,ALV,UNH,GS,HD,JNJ,PG,KO,MCD,CVX
     - name: StrategyServiceClient
-      value: http://strategyservice.bn-project.svc.cluster.local:5101
+      value: "{{ .Values.global.services.strategy.url }}"
     - name: FinAIServiceClient
-      value: http://finaiservice.bn-project.svc.cluster.local:8000
+      value: "{{ .Values.global.services.finai.url }}"
     - name: RedisConnection
-      value: redis.default.svc.cluster.local:6379
+      value: "{{ .Values.global.redis.host }}:{{ .Values.global.redis.port }}"
     - name: UpdateAlpacaDb__Enabled
       value: true
     - name: UpdateAlpacaDb__IntervalInMinutes
@@ -64,20 +94,21 @@ alpacaservice:
 
   keycloakExtraEnvVars:
     - name: Keycloak__Authority
-      value: http://keycloak.bn-auth.svc.cluster.local:8080/realms/bn-project
+      value: "{{ .Values.global.keycloak.authority }}"
     - name: Keycloak__Host
-      value: http://keycloak.bn-auth.svc.cluster.local:8080
+      value: "{{ .Values.global.keycloak.host }}"
     - name: Keycloak__Realm
-      value: bn-project
+      value: "{{ .Values.global.keycloak.realm }}"
     - name: Keycloak__ClientId
-      value: bn-project-client
+      value: "{{ .Values.global.keycloak.clientId }}"
     - name: Keycloak__ClientSecret
-      value: L7nsaqcDc1QrLSIrKvU0rEjUwgIP2pp0
+      value: "{{ .Values.global.keycloak.clientSecret }}"
     - name: Keycloak__AdminClientId
-      value: config-cli
+      value: "{{ .Values.global.keycloak.adminClientId }}"
   connectionStringsExtraEnvVars:
     - name: ConnectionStrings__AlpacaDbConnection
-      value: Host=192.168.178.74;Port=5432;Database=bn_alpaca_dev;Username=bnproject_user;Password=L7n1P2pp0??13;
+      value: "Host={{ .Values.global.postgresql.host }};Port={{ .Values.global.postgresql.port }};Database=bn_alpaca_dev;Username={{ .Values.global.postgresql.username }};Password={{ .Values.global.postgresql.password }}"
+
 
 strategyservice:
   aspnetCoreExtraEnvVars:
@@ -86,27 +117,28 @@ strategyservice:
     - name: ASPNETCORE_ENVIRONMENT
       value: Development
     - name: RedisConnection
-      value: redis.default.svc.cluster.local:6379
+      value: "{{ .Values.global.redis.host }}:{{ .Values.global.redis.port }}"
     - name: FinAIServiceClient
-      value: http://finaiservice.bn-project.svc.cluster.local:8000
+      value: "{{ .Values.global.services.finai.url }}"
     - name: AlpacaServiceClient
-      value: http://alpacaservice.bn-project.svc.cluster.local:5130
+      value: "{{ .Values.global.services.alpaca.url }}"
+
   keycloakExtraEnvVars:
     - name: Keycloak__Authority
-      value: http://keycloak.bn-auth.svc.cluster.local:8080/realms/bn-project
+      value: "{{ .Values.global.keycloak.authority }}"
     - name: Keycloak__Host
-      value: http://keycloak.bn-auth.svc.cluster.local:8080
+      value: "{{ .Values.global.keycloak.host }}"
     - name: Keycloak__Realm
-      value: bn-project
+      value: "{{ .Values.global.keycloak.realm }}"
     - name: Keycloak__ClientId
-      value: bn-project-client
+      value: "{{ .Values.global.keycloak.clientId }}"
     - name: Keycloak__ClientSecret
-      value: L7nsaqcDc1QrLSIrKvU0rEjUwgIP2pp0
+      value: "{{ .Values.global.keycloak.clientSecret }}"
     - name: Keycloak__AdminClientId
-      value: config-cli
+      value: "{{ .Values.global.keycloak.adminClientId }}"
   connectionStringsExtraEnvVars:
     - name: ConnectionStrings__BNProjectDbConnection
-      value: Host=192.168.178.74;Port=5432;Database=bn_strategy_dev;Username=bnproject_user;Password=L7n1P2pp0??13;
+      value: "Host={{ .Values.global.postgresql.host }};Port={{ .Values.global.postgresql.port }};Database=bn_strategy_dev;Username={{ .Values.global.postgresql.username }};Password={{ .Values.global.postgresql.password }}"
 
 notificationservice:
   aspnetCoreExtraEnvVars:
@@ -115,18 +147,18 @@ notificationservice:
     - name: ASPNETCORE_ENVIRONMENT
       value: Development
     - name: RedisConnection
-      value: redis.default.svc.cluster.local:6379
+      value: "{{ .Values.global.redis.host }}:{{ .Values.global.redis.port }}"
 
   keycloakExtraEnvVars:
     - name: Keycloak__Authority
-      value: http://keycloak.bn-auth.svc.cluster.local:8080/realms/bn-project
+      value: "{{ .Values.global.keycloak.authority }}"
     - name: Keycloak__Host
-      value: http://keycloak.bn-auth.svc.cluster.local:8080
+      value: "{{ .Values.global.keycloak.host }}"
     - name: Keycloak__Realm
-      value: bn-project
+      value: "{{ .Values.global.keycloak.realm }}"
     - name: Keycloak__ClientId
-      value: bn-project-client
+      value: "{{ .Values.global.keycloak.clientId }}"
     - name: Keycloak__ClientSecret
-      value: L7nsaqcDc1QrLSIrKvU0rEjUwgIP2pp0
+      value: "{{ .Values.global.keycloak.clientSecret }}"
     - name: Keycloak__AdminClientId
-      value: config-cli
+      value: "{{ .Values.global.keycloak.adminClientId }}"
