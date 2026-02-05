@@ -20,11 +20,14 @@ entries:
     - name: notificationservice
       repository: ""
       version: 0.1.0
+    - name: finaiservice
+      repository: ""
+      version: 0.1.0
     description: BN Project Helm Charts
     digest: a97b74df64d44449c005c78035721f8e7d1572dd307d1e672b4757907c5ab34d
     name: bn-project
     type: application
     urls:
-    - bn-project-1.1.30.tgz
-    version: 1.1.30
+    - bn-project-1.1.31.tgz
+    version: 1.1.31
 generated: "2025-12-30T10:28:58.699275+01:00"
