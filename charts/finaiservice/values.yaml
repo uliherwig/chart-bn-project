@@ -29,10 +29,9 @@ ingress:
   enabled: false
 
 service:
-  type: LoadBalancer
-  loadBalancerIP: 192.168.178.119
+  type: ClusterIP
   port: 8000
-  targetPort: 8000
+  targetPort: 8000    
   selector:
     app: finaiservice
 
