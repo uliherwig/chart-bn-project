@@ -10,23 +10,8 @@ image:
   # Overrides the image tag whose default is the chart appVersion.
   tag: "latest"
 
-imagePullSecrets: []
 nameOverride: "finaiservice"
 fullnameOverride: "finaiservice"
-
-podAnnotations: {}
-podLabels: {}
-
-podSecurityContext: {}
-  # fsGroup: 2000
-
-securityContext: {}
-
-serviceAccount:
-  create: false
-
-ingress:
-  enabled: false
 
 service:
   type: ClusterIP
@@ -41,7 +26,7 @@ env:
   REDIS_URL: redis-master.default.svc.cluster.local:6379
   LOG_LEVEL: INFO
   MAX_TRIALS: 100
-  CONNECTION_STRING: Host=192.168.178.74;Port=5432;Database=bn_ai_project_db;Username=bnproject_user;Password=L7n1P2pp0??13;
+  CONNECTION_STRING: Host=192.168.178.74;Port=5432;Database=bn_finai_dev;Username=bnproject_user;Password=L7n1P2pp0??13;
 
 autoscaling:
   enabled: false
@@ -49,6 +34,12 @@ autoscaling:
   maxReplicas: 10
   targetCPUUtilizationPercentage: 80
   # targetMemoryUtilizationPercentage: 80
+
+serviceAccount:
+  create: false
+
+ingress:
+  enabled: false
 
 volumes: []
 volumeMounts: []

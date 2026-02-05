@@ -161,3 +161,5 @@ notificationservice:
       value: L7nsaqcDc1QrLSIrKvU0rEjUwgIP2pp0
     - name: Keycloak__AdminClientId
       value: config-cli
+
+      
