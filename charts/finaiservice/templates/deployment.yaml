@@ -37,18 +37,16 @@ spec:
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           env:
-            - name: ALPACA_API_URL
-              value: {{ .Values.env.ALPACA_API_URL | quote }}
-            - name: STRATEGY_API_URL
-              value: {{ .Values.env.STRATEGY_API_URL | quote }}
-            - name: IDENTITY_API_URL
-              value: {{ .Values.env.IDENTITY_API_URL | quote }}
-            - name: NEXTAUTH_URL
-              value: {{ .Values.env.NEXTAUTH_URL | quote }}
-            - name: NEXTAUTH_SECRET
-              value: {{ .Values.env.NEXTAUTH_SECRET | quote }}
-            - name: SESSION_SECRET
-              value: {{ .Values.env.SESSION_SECRET | quote }}
+
+            - name: REDIS_URL
+              value: {{ .Values.env.REDIS_URL | quote }}
+            - name: LOG_LEVEL
+              value: {{ .Values.env.LOG_LEVEL | quote }}
+            - name: MAX_TRIALS
+              value: {{ .Values.env.MAX_TRIALS | quote }}
+            - name: CONNECTION_STRING
+              value: {{ .Values.env.CONNECTION_STRING | quote }}
+ 
           ports:
             - name: http
               containerPort: {{ .Values.service.port }}
