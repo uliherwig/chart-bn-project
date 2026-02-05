@@ -4,7 +4,7 @@ description: BN Project Helm Charts
 type: application
 icon: https://example.com/path/to/icon.png
 # Helm chart version
-version: 1.1.32
+version: 1.1.33
 
 # BN Project version
 appVersion: "0.0.1"

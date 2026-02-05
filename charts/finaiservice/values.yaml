@@ -39,7 +39,7 @@ service:
 proxy: edge
 
 env:
-  REDIS_URL: redis://localhost:6379/0
+  REDIS_URL: redis-master.default.svc.cluster.local:6379
   LOG_LEVEL: INFO
   MAX_TRIALS: 100
   CONNECTION_STRING: Host=192.168.178.74;Port=5432;Database=bn_ai_project_db;Username=bnproject_user;Password=L7n1P2pp0??13;
