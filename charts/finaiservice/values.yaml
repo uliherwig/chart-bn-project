@@ -24,6 +24,8 @@ proxy: edge
 
 env:
   REDIS_URL: redis://redis-master.default.svc.cluster.local:6379
+  REDIS_HOST: redis-master.default.svc.cluster.local
+  REDIS_PORT: 6379
   LOG_LEVEL: INFO
   MAX_TRIALS: 100
   CONNECTION_STRING: postgresql://bnproject_user:L7n1P2pp0%3F%3F13@192.168.178.74:5432/bn_finai_dev
